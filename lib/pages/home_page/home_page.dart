@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsletter_mobile_application/components/widgets/newsletter_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,7 +7,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "Newsletter Seekers",
@@ -28,31 +28,15 @@ class HomePage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  width: 280,
-                  height: 300,
-                  padding: EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 270,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18.0),
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
-                        child: Text("Child"),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  NewsletterCard(),
+                  NewsletterCard(),
+                  NewsletterCard(),
+                ],
+              ),
             ),
           ],
         ),

@@ -85,8 +85,8 @@ ThemeData darkAppTheme = ThemeData(
     elevation: 0,
     iconTheme: IconThemeData(color: darkFontColor),
     titleTextStyle: TextStyle(
-      fontFamily: "Poppins",
       fontSize: 20,
+      fontFamily: "Poppins",
       color: darkFontColor,
       fontWeight: FontWeight.w600,
     ),
