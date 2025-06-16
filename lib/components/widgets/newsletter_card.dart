@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 
 class NewsletterCard extends StatelessWidget {
-  const NewsletterCard({super.key});
+  final String tag;
+  final String time;
+  final String title;
+  final String author;
+  final String thumbnailImageURL;
+
+  const NewsletterCard({
+    super.key,
+    this.tag = "",
+    this.time = "",
+    this.title = "",
+    this.author = "",
+    this.thumbnailImageURL = "",
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 280,
+      width: 280.0,
       padding: EdgeInsets.all(15.0),
       margin: EdgeInsets.only(right: 15.0),
       decoration: BoxDecoration(
@@ -17,17 +30,14 @@ class NewsletterCard extends StatelessWidget {
         children: [
           // >>> Newsletter thumbnail image:
           Container(
-            height: 200,
+            height: 200.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.0),
               color: Theme.of(context).colorScheme.surface,
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
-              child: Image.network(
-                "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(thumbnailImageURL, fit: BoxFit.cover),
             ),
           ),
           SizedBox(height: 10.0),
@@ -35,11 +45,8 @@ class NewsletterCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Trending No.1",
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-              Text("2 days ago", style: Theme.of(context).textTheme.labelSmall),
+              Text(tag, style: Theme.of(context).textTheme.labelSmall),
+              Text(time, style: Theme.of(context).textTheme.labelSmall),
             ],
           ),
           SizedBox(height: 10.0),
@@ -48,7 +55,7 @@ class NewsletterCard extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  "Save Water, Save Life is a best news",
+                  title,
                   maxLines: 2,
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
@@ -63,7 +70,7 @@ class NewsletterCard extends StatelessWidget {
                 backgroundColor: Theme.of(context).colorScheme.primary,
               ),
               SizedBox(width: 10.0),
-              Text("Nguyen Le Minh Khanh"),
+              Text(author),
             ],
           ),
         ],

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:newsletter_mobile_application/components/widgets/newsletter_card.dart';
+import 'package:newsletter_mobile_application/components/widgets/newsletter_for_you_card.dart';
+import 'package:newsletter_mobile_application/components/widgets/app_bottom_navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,32 +18,103 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Hotest Newsletter",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                Text("View all", style: Theme.of(context).textTheme.labelSmall),
-              ],
-            ),
-            SizedBox(height: 20),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  NewsletterCard(),
-                  NewsletterCard(),
-                  NewsletterCard(),
+                  Text(
+                    "Hotest Newsletter",
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  Text(
+                    "View all",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
                 ],
               ),
-            ),
-          ],
+              SizedBox(height: 20.0),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    NewsletterCard(
+                      time: "2 days ago",
+                      tag: "Trending No 1",
+                      author: "Nguyen Le Minh Khanh",
+                      title: "Save Water, Save Life is a best news",
+                      thumbnailImageURL:
+                          "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                    ),
+                    NewsletterCard(
+                      time: "2 days ago",
+                      tag: "Trending No 1",
+                      author: "Nguyen Le Minh Khanh",
+                      title: "Save Water, Save Life is a best news",
+                      thumbnailImageURL:
+                          "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                    ),
+                    NewsletterCard(
+                      time: "2 days ago",
+                      tag: "Trending No 1",
+                      author: "Nguyen Le Minh Khanh",
+                      title: "Save Water, Save Life is a best news",
+                      thumbnailImageURL:
+                          "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Newsletter For You",
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  Text(
+                    "View all",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              Column(
+                children: [
+                  NewsletterForYouCard(
+                    time: "2 days ago",
+                    tag: "Trending No 1",
+                    author: "Nguyen Le Minh Khanh",
+                    title: "Save Water, Save Life is a best news",
+                    thumbnailImageURL:
+                        "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                  ),
+                  NewsletterForYouCard(
+                    time: "2 days ago",
+                    tag: "Trending No 1",
+                    author: "Nguyen Le Minh Khanh",
+                    title: "Save Water, Save Life is a best news",
+                    thumbnailImageURL:
+                        "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                  ),
+                  NewsletterForYouCard(
+                    time: "2 days ago",
+                    tag: "Trending No 1",
+                    author: "Nguyen Le Minh Khanh",
+                    title: "Save Water, Save Life is a best news",
+                    thumbnailImageURL:
+                        "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
+      floatingActionButton: const AppBottomNavigationBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
     );
   }
 }
