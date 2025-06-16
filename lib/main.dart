@@ -1,7 +1,9 @@
+import 'package:get/get.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:newsletter_mobile_application/pages/home_page/home_page.dart';
+
 import 'package:newsletter_mobile_application/themes/app_themes.dart';
+import 'package:newsletter_mobile_application/pages/home_page/home_navigation_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkAppTheme,
       themeMode: ThemeMode.system,
       // >>> App routes:
-      home: const HomePage(),
+      home: const HomeNavigationPage(),
     );
   }
 }

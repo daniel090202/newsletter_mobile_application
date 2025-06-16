@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:newsletter_mobile_application/components/widgets/newsletter_card.dart';
 import 'package:newsletter_mobile_application/components/widgets/newsletter_for_you_card.dart';
-import 'package:newsletter_mobile_application/components/widgets/app_bottom_navigation_bar.dart';
+import 'package:newsletter_mobile_application/pages/newsletter_details_page/newsletter_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -46,6 +47,9 @@ class HomePage extends StatelessWidget {
                       title: "Save Water, Save Life is a best news",
                       thumbnailImageURL:
                           "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                      onTap: () {
+                        Get.to(NewsletterDetailsPage());
+                      },
                     ),
                     NewsletterCard(
                       time: "2 days ago",
@@ -54,6 +58,9 @@ class HomePage extends StatelessWidget {
                       title: "Save Water, Save Life is a best news",
                       thumbnailImageURL:
                           "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                      onTap: () {
+                        Get.to(NewsletterDetailsPage());
+                      },
                     ),
                     NewsletterCard(
                       time: "2 days ago",
@@ -62,6 +69,9 @@ class HomePage extends StatelessWidget {
                       title: "Save Water, Save Life is a best news",
                       thumbnailImageURL:
                           "https://i.guim.co.uk/img/media/f5e46bdde33f0a884ae02daba71d06ac0ba945e9/2350_812_5074_4060/master/5074.jpg?width=700&dpr=2&s=none&crop=5%3A4",
+                      onTap: () {
+                        Get.to(NewsletterDetailsPage());
+                      },
                     ),
                   ],
                 ),
@@ -113,8 +123,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: const AppBottomNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
     );
   }
 }
