@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NewsletterCard extends StatelessWidget {
+class NewsletterVerticalCard extends StatelessWidget {
   final String tag;
   final String time;
   final String title;
@@ -9,7 +9,7 @@ class NewsletterCard extends StatelessWidget {
 
   final VoidCallback? onTap;
 
-  const NewsletterCard({
+  const NewsletterVerticalCard({
     super.key,
     this.tag = "",
     this.time = "",
@@ -75,7 +75,7 @@ class NewsletterCard extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
                 SizedBox(width: 10.0),
-                Text(author),
+                Flexible(child: Text(author, maxLines: 1)),
               ],
             ),
           ],
