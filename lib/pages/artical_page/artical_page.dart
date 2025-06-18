@@ -26,7 +26,7 @@ class ArticalPage extends StatelessWidget {
               Obx(
                 () => Column(
                   children: [
-                    ...newsletterController.topHeadlinesNewsletters.map((
+                    ...newsletterController.searchNewslettersResults.map((
                       newsletter,
                     ) {
                       return NewsletterHorizontalCard(

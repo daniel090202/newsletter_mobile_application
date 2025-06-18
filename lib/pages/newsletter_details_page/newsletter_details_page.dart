@@ -1,5 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:lottie/lottie.dart';
+
+import 'package:flutter/material.dart';
+import 'package:newsletter_mobile_application/controllers/text_to_speech_controller.dart';
+
 import 'package:newsletter_mobile_application/models/newsletter_model.dart';
 
 class NewsletterDetailsPage extends StatelessWidget {
@@ -9,6 +14,10 @@ class NewsletterDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextToSpeechController textToSpeechController = Get.put(
+      TextToSpeechController(),
+    );
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -72,9 +81,11 @@ class NewsletterDetailsPage extends StatelessWidget {
                 SizedBox(height: 20.0),
                 Row(
                   children: [
-                    Text(
-                      "${newsletter.author ?? "Unknown"} - ${newsletter.publishedAt ?? ""}",
-                      style: Theme.of(context).textTheme.labelSmall,
+                    Flexible(
+                      child: Text(
+                        "${newsletter.author ?? "Unknown"} - ${newsletter.publishedAt ?? ""}",
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ),
                   ],
                 ),
@@ -92,6 +103,47 @@ class NewsletterDetailsPage extends StatelessWidget {
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                   ],
+                ),
+                SizedBox(height: 20.0),
+                // >>> Voice bar.
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                  child: Row(
+                    children: [
+                      Obx(
+                        () => textToSpeechController.isSpeaking.value
+                            ? IconButton(
+                                onPressed: () {
+                                  textToSpeechController.stop();
+                                },
+                                icon: Icon(Icons.stop, size: 40.0),
+                              )
+                            : IconButton(
+                                onPressed: () {
+                                  textToSpeechController.speak(
+                                    newsletter.description ?? "No description",
+                                  );
+                                },
+                                icon: Icon(
+                                  Icons.play_arrow_rounded,
+                                  size: 40.0,
+                                ),
+                              ),
+                      ),
+                      Expanded(
+                        child: Obx(
+                          () => Lottie.asset(
+                            "assets/animations/wave.json",
+                            height: 60.0,
+                            animate: textToSpeechController.isSpeaking.value,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 20.0),
                 Row(

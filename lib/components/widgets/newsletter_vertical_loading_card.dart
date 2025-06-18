@@ -57,14 +57,14 @@ class NewsletterVerticalLoadingCard extends StatelessWidget {
           Row(
             children: [
               LoadingContainer(width: 30.0, height: 30.0),
-              const SizedBox(width: 10.0),
+              SizedBox(width: 10.0),
               LoadingContainer(
                 height: 20.0,
                 width: MediaQuery.of(context).size.width / 2,
               ),
             ],
           ),
-          const SizedBox(height: 10.0),
+          SizedBox(height: 10.0),
         ],
       ),
     );

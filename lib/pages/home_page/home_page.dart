@@ -79,38 +79,30 @@ class HomePage extends StatelessWidget {
                       ? Row(
                           children: [
                             NewsletterHorizontalLoadingCard(),
+                            SizedBox(width: 20.0),
                             NewsletterHorizontalLoadingCard(),
-                            // NewsletterHorizontalLoadingCard(),
-                            // NewsletterHorizontalLoadingCard(),
+                            SizedBox(width: 20.0),
+                            NewsletterHorizontalLoadingCard(),
                           ],
                         )
-                      :
-                        // Row(
-                        //     children: [
-                        //       ...newsletterController.topHeadlinesNewsletters.map(
-                        //         (newsletter) => NewsletterVerticalCard(
-                        //           tag: "Trending No 1",
-                        //           title: newsletter.title ?? "",
-                        //           time: newsletter.publishedAt ?? "",
-                        //           author: newsletter.author ?? "Unknown",
-                        //           thumbnailImageURL: newsletter.urlToImage ?? "",
-                        //           onTap: () {
-                        //             Get.to(
-                        //               NewsletterDetailsPage(
-                        //                 newsletter: newsletter,
-                        //               ),
-                        //             );
-                        //           },
-                        //         ),
-                        //       ),
-                        //     ],
-                        //   ),
-                        Row(
+                      : Row(
                           children: [
-                            NewsletterHorizontalLoadingCard(),
-                            NewsletterHorizontalLoadingCard(),
-                            // NewsletterHorizontalLoadingCard(),
-                            // NewsletterHorizontalLoadingCard(),
+                            ...newsletterController.topHeadlinesNewsletters.map(
+                              (newsletter) => NewsletterVerticalCard(
+                                tag: "Trending No 1",
+                                title: newsletter.title ?? "",
+                                time: newsletter.publishedAt ?? "",
+                                author: newsletter.author ?? "Unknown",
+                                thumbnailImageURL: newsletter.urlToImage ?? "",
+                                onTap: () {
+                                  Get.to(
+                                    NewsletterDetailsPage(
+                                      newsletter: newsletter,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
                           ],
                         ),
                 ),

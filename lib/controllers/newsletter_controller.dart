@@ -11,6 +11,7 @@ class NewsletterController extends GetxController {
   RxBool isLoadingForYouNewslettersData = false.obs;
   RxBool isLoadingLatestTeslaArticlesData = false.obs;
   RxBool isLoadingLatestAppleArticlesData = false.obs;
+  RxBool isLoadingSearchNewsletterResults = false.obs;
   RxBool isLoadingTopHeadlinesNewslettersData = false.obs;
   RxBool isLoadingTopBusinessHeadlinesNewslettersData = false.obs;
 
@@ -18,6 +19,7 @@ class NewsletterController extends GetxController {
   RxList<NewsletterModel> latestTeslaArticles = <NewsletterModel>[].obs;
   RxList<NewsletterModel> latestAppleArticles = <NewsletterModel>[].obs;
   RxList<NewsletterModel> topHeadlinesNewsletters = <NewsletterModel>[].obs;
+  RxList<NewsletterModel> searchNewslettersResults = <NewsletterModel>[].obs;
   RxList<NewsletterModel> topBusinessHeadlinesNewsletters =
       <NewsletterModel>[].obs;
 
@@ -167,5 +169,34 @@ class NewsletterController extends GetxController {
     }
 
     isLoadingTopBusinessHeadlinesNewslettersData.value = false;
+  }
+
+  Future<void> searchNewsletters(String searchValue) async {
+    isLoadingSearchNewsletterResults.value = true;
+
+    String baseURL =
+        "https://newsapi.org/v2/everything?q=$searchValue&from=2025-05-17&sortBy=publishedAt&apiKey=ea6d5b0564724e67b5733b7424f10b45";
+
+    try {
+      http.Response response = await http.get(Uri.parse(baseURL));
+
+      if (response.statusCode == 200) {
+        var body = jsonDecode(response.body);
+        var articles = body["articles"];
+
+        searchNewslettersResults.clear();
+
+        for (var newsletter in articles) {
+          searchNewslettersResults.add(NewsletterModel.fromJson(newsletter));
+        }
+      } else {
+        errorMessage.value =
+            "Something went wrong during search for newsletters";
+      }
+    } catch (error) {
+      errorMessage.value = error.toString();
+    }
+
+    isLoadingSearchNewsletterResults.value = false;
   }
 }
